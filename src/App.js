@@ -21,6 +21,13 @@ function App() {
       <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
       <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
       <Row title="Documentaries" fetchUrl={requests.fetchDocumentaries} />
+      <h2
+        style={{
+          color: "white",
+          textAlign: 'center',
+          paddingBottom: '50px'
+        }}
+      >Made by Abraham Cepeda</h2>
     </div>
   );
 }

@@ -45,13 +45,23 @@ function Row({title, fetchUrl, isLargeRow}) {
             <h2>{title}</h2>
             <div className="row__posters">
                 {movies.map((movie) => (
-                    <img 
+                    movie.backdrop_path &&
+                    <div 
                         key={movie.id}
                         className={`row__poster ${isLargeRow && "row__posterLarge"}`}
-                        src={`${baseUrl}${isLargeRow ? movie.poster_path : movie.backdrop_path}`} 
-                        alt={movie.name}
+                        style={{
+                            backgroundSize: "cover",
+                            backgroundImage: `url(
+                                ${baseUrl}${isLargeRow ? movie.poster_path : movie.backdrop_path}
+                            )`,
+                            backgroundPosition: "center center",
+                        }}
                         onClick={() => handleClick(movie)}
-                    />
+                    >
+                        <div className="row__posterOverlay">
+                            {!isLargeRow && <h3 className="row__posterTitle">{movie?.title || movie?.name || movie?.original_name || ""}</h3>}
+                        </div>
+                    </div>
                 ))}
             </div>
             {trailerUrl && <YouTube videoId={trailerUrl} opts={opts}/>}
