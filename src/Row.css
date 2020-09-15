@@ -1,5 +1,8 @@
 .row{
+    position: relative;
     margin-left: 20px;
+    color: white;
+    top: -30px;
 }
 .row__posters{
     display: flex;
@@ -17,6 +20,8 @@
     max-height: 150px;
     margin-right: 10px;
     transition: transform 450ms;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .row__poster:hover{
     transform: scale(1.08);
