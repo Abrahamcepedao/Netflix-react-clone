@@ -2,21 +2,24 @@ import React, { useState, useEffect } from 'react'
 import axios from './axios';
 import requests from './request';
 import './Banner.css'
+import { useDataLayerValue } from './DataLayer';
 
 function Banner({fetchUrl}) {
     const [movie, setMovie] =  useState([]);
+    const [{request}] = useDataLayerValue();
 
     useEffect(() => {
-        async function fetchData(){
-            const request = await axios.get(requests.fetchNetflixOriginals);
-            setMovie(
-                request.data.results[
-                    Math.floor(Math.random() * request.data.results.length - 1)
-                ]
-            );
-            movie == undefined && fetchData();
-            return request;
+        async function fetchData() {
+            
+          const newRequest = await axios.get(fetchUrl ? requests.fetchNetflixOriginals : request);
+          setMovie(
+            newRequest.data.results[
+              Math.floor(Math.random() * newRequest.data.results.length - 1)
+            ]
+          );
+          return newRequest;
         }
+        
         fetchData();
     }, []);
     console.log("banner movie", movie);
