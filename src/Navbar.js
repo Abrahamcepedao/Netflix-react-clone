@@ -10,18 +10,21 @@ function Navbar() {
 
     return (
       <div className={"navbar__black"}>
-        <Link to="/" style={{cursor: "pointer"}}>
+        <Link to="/">
           <img
             className="navbar__logo"
             src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
-            alt="Netflix logo"
+            alt="Netflix"
           />
         </Link>
-        <img
-          className="navbar__avatar"
-          src={avatar}
-          alt="AC"
-        />
+        <Link to="/login">
+            <img
+            className="navbar__avatar"
+            src={avatar}
+            alt="AC"
+            />
+        </Link>
+        
       </div>
     );
 }

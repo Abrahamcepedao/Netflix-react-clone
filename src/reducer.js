@@ -24,7 +24,7 @@ const reducer = (state, action) => {
     case "SET_AVATAR":
         return {
             ...state,
-            avatar: action.title
+            avatar: action.avatar
         }
     default:
       return state;

@@ -28,11 +28,12 @@
     font-size: 45px;
 }
 .login__images{
-    width: 60%;
+    width: 70%;
     margin: auto;
     display: flex;
     justify-content: space-between;
     overflow-x: scroll;
+    padding: 20px;
 }
 
 .login__item{
@@ -40,6 +41,11 @@
     min-width: 150px;
     margin-right: 10px;
     margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+.login__item:hover{
+    transform: scale(1.1);
 }
 .login__item > img{
     width: 100%;
@@ -49,4 +55,9 @@
 .login__item > h4{
     color: gray;
     font-size: 25px;
+    cursor: pointer;
+}
+
+.login__anchor{
+    text-decoration: none;
 }
