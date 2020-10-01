@@ -63,3 +63,27 @@
 .row__posterOverlay:hover h3{
     visibility: visible;
 }
+
+.row__title{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    max-width: 400px;
+}
+.row__title h2, .row__title div p, .row__title div svg{
+    margin-right: 10px;
+}
+.row__title div{
+    display: flex;
+    align-items: center;
+}
+.row__title div{
+    position: relative;
+    visibility: hidden;
+    transition-duration: 0.5s;
+    transform: translateX(-10px);
+}
+.row__title:hover > div{
+    visibility: visible;
+    transform: translateX(30px);
+}
