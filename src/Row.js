@@ -3,18 +3,32 @@ import YouTube from 'react-youtube';
 import axios from './axios';
 import movieTrailer from 'movie-trailer';
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { NavLink, Link } from "react-router-dom";
+import { useDataLayerValue } from "./DataLayer";
 import "./Row.css";
 
 const baseUrl = "https://image.tmdb.org/t/p/original/";
 
-function Row({title, fetchUrl, isLargeRow}) {
+const LinkElement = (props) => {
+  const { classes, element, url } = props;
+
+  return (
+    <NavLink to={process.env.PUBLIC_URL + url} className={classes}>
+      {element}
+    </NavLink>
+  );
+};
+
+function Row({title2, fetchUrl, isLargeRow, isNotMain}) {
     const [movies, setMovies] = useState([]);
     const [trailerUrl, setTrailerUrl] = useState('');
+    const [{ request, title }, dispatch] = useDataLayerValue();
+
     useEffect(() => {
         async function  fetchData(){
-            const request = await axios.get(fetchUrl);
-            setMovies(request.data.results);
-            return request;
+            const newRequest = await axios.get(fetchUrl);
+            setMovies(newRequest.data.results);
+            return newRequest;
         }
         fetchData();
     }, [fetchUrl]);
@@ -39,18 +53,38 @@ function Row({title, fetchUrl, isLargeRow}) {
                 .catch((error) =>  console.log(error))
         }
     }
+    const setRequest = () => {
+      dispatch({
+        type: "SET_REQUEST",
+        request: fetchUrl,
+      });
+      dispatch({
+        type: "SET_TITLE",
+        title: title2
+      });
+      console.log("request:", request);
+      console.log("fecthUrl:", fetchUrl);
+      console.log("title", title)
+    }
 
     return (
       <div className="row">
         {/* title */}
-        <div className="row__title">
-          <h2>{title}</h2>
-          <div>
-            <p>Explorar todos</p>
-            <ArrowForwardIosIcon style={{ fontSize: 12 }} />
-          </div>
-        </div>
-
+        {!isNotMain &&
+          <Link to="/list" className="row__anchor" onClick={setRequest}>
+            <div className="row__title">
+              <h2>{title2}</h2>
+                <div>
+                  <p>Explorar todos</p>
+                  <ArrowForwardIosIcon style={{ fontSize: 12 }} />
+                </div>
+            </div>
+          </Link>
+        }
+        {isNotMain &&
+          <h2>{title2}</h2>
+        }
+        
         <div className="row__posters">
           {movies.map(
             (movie) =>

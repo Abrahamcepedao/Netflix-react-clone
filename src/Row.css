@@ -28,8 +28,8 @@
 }
 
 .row__posterLarge{
-    min-width: 200px;
-    height: 300px;
+    min-width: 300px;
+    height: 450px;
 }
 
 .row__posterLarge:hover{
@@ -64,6 +64,10 @@
     visibility: visible;
 }
 
+.row__anchor{
+    text-decoration: none !important;
+    color: white;
+}
 .row__title{
     display: flex;
     align-items: center;
@@ -85,5 +89,5 @@
 }
 .row__title:hover > div{
     visibility: visible;
-    transform: translateX(30px);
+    transform: translateX(20px);
 }

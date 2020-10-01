@@ -3,9 +3,7 @@ import axios from './axios';
 import requests from './request';
 import './Banner.css'
 
-const baseUrl = "https://image.tmdb.org/t/p/original/";
-
-function Banner() {
+function Banner({fetchUrl}) {
     const [movie, setMovie] =  useState([]);
 
     useEffect(() => {
@@ -16,12 +14,12 @@ function Banner() {
                     Math.floor(Math.random() * request.data.results.length - 1)
                 ]
             );
+            movie == undefined && fetchData();
             return request;
         }
         fetchData();
     }, []);
-    console.log(movie);
-
+    console.log("banner movie", movie);
     function  truncate(str, n) {
         return str?.length > n ? str.substring(0, n-1) + "..." : str;
     }

@@ -2,15 +2,15 @@
     color: white;
     object-fit: contain;
     width: 100vw;
-    height: 600px;
+    height: 80vh;
 }
 
 .banner__content{
     position: relative;
     width: 100%;
     padding-left: 30px;
-    padding-top: 240px;
-    height: 360px;
+    padding-top: 340px;
+    height: 460px;
     background-image: linear-gradient(
         180deg,
         rgba(0,0,0,0) 10%,
