@@ -3,7 +3,8 @@ export const initialState = {
   /* request: `/trending/all/week?api_key=${API_KEY}&language=en-US`, */
   /* title: "Trending now", */
   request: null,
-  title: null
+  title: null,
+  avatar: null
 };
 
 
@@ -20,6 +21,11 @@ const reducer = (state, action) => {
           ...state,
         title: action.title
       };
+    case "SET_AVATAR":
+        return {
+            ...state,
+            avatar: action.title
+        }
     default:
       return state;
   }

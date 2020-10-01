@@ -25,25 +25,25 @@ function List() {
               title2={`${title} Page 2`}
               fetchUrl={`${request}&page=2`}
               isNotMain
-              isLargeRow={title == "Netflix originals"}
+              isLargeRow={title === "Netflix originals"}
             />
             <Row
               title2={`${title} Page 3`}
               fetchUrl={`${request}&page=3`}
               isNotMain
-              isLargeRow={title == "Netflix originals"}
+              isLargeRow={title === "Netflix originals"}
             />
             <Row
               title2={`${title} Page 4`}
               fetchUrl={`${request}&page=4`}
               isNotMain
-              isLargeRow={title == "Netflix originals"}
+              isLargeRow={title === "Netflix originals"}
             />
             <Row
               title2={`${title} Page 5`}
               fetchUrl={`${request}&page=5`}
               isNotMain
-              isLargeRow={title == "Netflix originals"}
+              isLargeRow={title === "Netflix originals"}
             />
           </>
         ) : (
